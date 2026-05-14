@@ -40,7 +40,7 @@ jobs:
             echo "Registry=$ECR_REGISTRY"
             echo "Repo=$ECR_REPOSITORY"
             echo "Tag=$IMAGE_TAG"
-
+        run:  |
             IMAGE="$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
  
             docker build . -t "$IMAGE"

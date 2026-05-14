@@ -20,10 +20,10 @@ app = Flask(__name__)
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-OPEN_ROUTER_API_KEY = os.getenv("OPEN_ROUTER_API_KEY")
+OPENAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
-os.environ["OPENAI_API_KEY"] = OPEN_ROUTER_API_KEY
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 os.environ["OPENAI_BASE_URL"] = "https://openrouter.ai/api/v1"
 
 
@@ -41,7 +41,7 @@ docsearch = PineconeVectorStore.from_existing_index(
 retriever = docsearch.as_retriever(search_kwargs={"k": 3})
 
 chatModel = ChatOpenAI(
-    api_key=OPEN_ROUTER_API_KEY,
+    api_key=OPENAI_API_KEY,
     base_url="https://openrouter.ai/api/v1",
     model="openai/gpt-oss-120b"
 )
